@@ -20,4 +20,12 @@ export default function Card() {
     const handleChangeD = e => {
         setDay(e.target.value);
     };
+
+useEffect(() => {
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${year}-${month}-${day}`)
+    .then(response =>
+        setNasa(response.data)
+        .catch(error => console.log(error))
+        )
+}, [year, month, day])
 }
