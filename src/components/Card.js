@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
+import styled from 'styled-components';
+
+const StyledDate = styled.div`
+    &:hover {
+        background-color: red;
+        transition: 0.5s ease-in-out;
+    }
+    transition: 0.5s ease-in-out;
+
+    img {
+        width: 50%;
+        height: 50%;
+    }
+`;
 
 function Card() {
 
@@ -30,9 +44,9 @@ useEffect(() => {
 }, [year, month, day])
 
     return (
-        <div>
+        <StyledDate>
             <h1>{nasa.date}</h1>
-            <img className='nasaPic' src={nasa.hdurl} />
+            <img className='nasaPic' src={nasa.hdurl} alt='space image'/>
             <p className='description'>Description: {nasa.explanation}</p>
             <p>Copyright: {nasa.copyright}</p>
             <p>What day would you like to see?</p>
@@ -61,7 +75,7 @@ useEffect(() => {
                 onChange={handleChangeD}
                 />
             </div>
-        </div>
+        </StyledDate>
     )
 }
 
